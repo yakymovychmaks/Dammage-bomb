@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    [SerializeField] private float _value;
+    [SerializeField] private int _value;
 
-    public float Value => _value;
+    public int Value => _value;
 }

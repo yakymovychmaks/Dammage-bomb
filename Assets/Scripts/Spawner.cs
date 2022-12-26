@@ -11,8 +11,14 @@ public class Spawner : MonoBehaviour
     {
         for(int i = 0; i < _objectCount; i++)
         {
-            Vector3 randomSpawnVector = new Vector3(Random.Range(-100,100),Random.Range(-100,100),Random.Range(-100,100));
-            Instantiate(_coinTemplate, randomSpawnVector, Quaternion.identity);
+            
+            Instantiate(_coinTemplate, RandVector(), Quaternion.identity);
+            Instantiate(_bombTemplate, RandVector(), Quaternion.identity);
         }
+    }
+    public Vector3 RandVector()
+    {
+        Vector3 randomSpawnVector = new Vector3(Random.Range(-200,200),Random.Range(-200,200),Random.Range(-200,200));
+        return randomSpawnVector;
     }
 }
