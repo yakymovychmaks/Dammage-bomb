@@ -12,6 +12,7 @@ public class Airplane : MonoBehaviour
     
     [SerializeField] private AudioSource _musicAudio;
     [SerializeField] private AudioSource _coinsAudio;
+    [SerializeField] private AudioSource _repairAudio;
 
 
 
@@ -51,6 +52,13 @@ public class Airplane : MonoBehaviour
                         Destroy(gameObject);
                 }   
             }
+            _healthText.text = hp.ToString();
+        }
+        else if(other.TryGetComponent(out Hearts hearts))
+        {
+            _repairAudio.Play();
+            hp+=hearts.Value;
+            Destroy(hearts.gameObject);
             _healthText.text = hp.ToString();
         }
     }
