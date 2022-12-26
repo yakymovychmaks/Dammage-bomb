@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class Airplane : MonoBehaviour
 {
 
-    [SerializeField] private TMP_Text _healthText;
+    
     [SerializeField] private TMP_Text _scoreText;
     [SerializeField] public int hp;
     [SerializeField] private int score = 0;
@@ -22,11 +22,7 @@ public class Airplane : MonoBehaviour
 
     // public event UnityAction<int> HealthChanged;
 
-    private void Start()
-    {
-       
-        _healthText.text = hp.ToString();
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -52,14 +48,15 @@ public class Airplane : MonoBehaviour
                         Destroy(gameObject);
                 }   
             }
-            _healthText.text = hp.ToString();
+            
         }
         else if(other.TryGetComponent(out Hearts hearts))
         {
             _repairAudio.Play();
+            if(hp < 100)
             hp+=hearts.Value;
             Destroy(hearts.gameObject);
-            _healthText.text = hp.ToString();
+            
         }
     }
 }
